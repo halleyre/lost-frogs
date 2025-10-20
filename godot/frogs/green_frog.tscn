@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://dh51jnnoqr2gh"]
+
+[ext_resource type="Texture2D" uid="uid://dwdc3vtgt3brc" path="res://assets/frogs/green-frog.png" id="1_v4td4"]
+[ext_resource type="Script" uid="uid://dw5pqqe5ac8ce" path="res://frogs/frog.gd" id="2_di41w"]
+
+[node name="GreenFrog" type="Sprite2D"]
+texture = ExtResource("1_v4td4")
+script = ExtResource("2_di41w")
+metadata/_custom_type_script = "uid://dw5pqqe5ac8ce"
