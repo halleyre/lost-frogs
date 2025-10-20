@@ -1,3 +1,7 @@
 # godot
 .godot
 .editorconfig
+
+# obsidian
+.obsidian
+.trash
