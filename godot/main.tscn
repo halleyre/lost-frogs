@@ -6,3 +6,5 @@
 [node name="main" type="Node"]
 script = ExtResource("1_ig7tw")
 levels = Array[PackedScene]([ExtResource("2_0xm2m")])
+
+[node name="UILayer" type="CanvasLayer" parent="."]

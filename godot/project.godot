@@ -15,6 +15,10 @@ run/main_scene="uid://baa365qtbk4ed"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="uid://dwdc3vtgt3brc"
 
+[autoload]
+
+UIEventbus="*res://ui/ui_eventbus.gd"
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"
