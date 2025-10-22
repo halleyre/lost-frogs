@@ -1,23 +1,20 @@
+class_name LevelControls
 extends Node2D
 
 signal move_just_pressed(direction)
 signal move_released(direction)
-signal pan(direction)
-const dir_actions = ["ui_left", "ui_right", "ui_up", "ui_down"]
+const dir_actions = {
+	Frog.UP: 	"ui_up",
+	Frog.RIGHT: "ui_right",
+	Frog.DOWN:	"ui_down",
+	Frog.LEFT:	"ui_left"}
 
+signal pan(direction)
 signal focus(dir)
 
-func _enter_tree():
-	UIEventbus.signals["move_just_pressed"] = move_just_pressed
-	UIEventbus.signals["move_released"] = move_released
-	
-func _exit_tree():
-	UIEventbus.signals.erase("move_just_pressed")
-	UIEventbus.signals.erase("move_released")
-
-func _process(_delta):
-	for dir in range(dir_actions.size()):
-		if Input.is_action_just_pressed(dir_actions[dir]):
+func _input(event: InputEvent):
+	for dir in dir_actions:
+		if event.is_action_pressed(dir_actions[dir]):
 			move_just_pressed.emit(dir)
-		if Input.is_action_just_released(dir_actions[dir]):
+		if event.is_action_released(dir_actions[dir]):
 			move_released.emit(dir)

@@ -1,6 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://lttg63x14gvt"]
+[gd_scene load_steps=3 format=3 uid="uid://lttg63x14gvt"]
 
 [ext_resource type="Script" uid="uid://bx74kaeeifb31" path="res://ui/level_controls.gd" id="1_awsn8"]
+[ext_resource type="Texture2D" uid="uid://bea46ejvo53on" path="res://assets/ui/level_controls.png" id="2_sfwwh"]
 
 [node name="LevelControls" type="Node2D"]
 script = ExtResource("1_awsn8")
+
+[node name="LevelControls" type="Sprite2D" parent="."]
+position = Vector2(448, 416)
+texture = ExtResource("2_sfwwh")
