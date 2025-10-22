@@ -1,11 +1,51 @@
-[gd_scene load_steps=3 format=3 uid="uid://lttg63x14gvt"]
+[gd_scene load_steps=8 format=3 uid="uid://lttg63x14gvt"]
 
 [ext_resource type="Script" uid="uid://bx74kaeeifb31" path="res://ui/level_controls.gd" id="1_awsn8"]
-[ext_resource type="Texture2D" uid="uid://bea46ejvo53on" path="res://assets/ui/level_controls.png" id="2_sfwwh"]
+[ext_resource type="Texture2D" uid="uid://viu7mrcrvglo" path="res://res/ui/level_controls/ctrl-up.tres" id="2_3jko6"]
+[ext_resource type="Texture2D" uid="uid://c4ek66xktk0a1" path="res://res/ui/level_controls/ctrl-move.tres" id="3_dj2cn"]
+[ext_resource type="Texture2D" uid="uid://g6rg435w5prw" path="res://res/ui/level_controls/ctrl-down.tres" id="4_hteoe"]
+[ext_resource type="Texture2D" uid="uid://cm57dwjsxonhi" path="res://res/ui/level_controls/ctrl-left.tres" id="5_mobtj"]
+[ext_resource type="Texture2D" uid="uid://cqpvpp7yxl6uv" path="res://res/ui/level_controls/ctrl-pan.tres" id="6_hy2bl"]
+[ext_resource type="Texture2D" uid="uid://dvpyjri0mg2n5" path="res://res/ui/level_controls/ctrl-right.tres" id="7_hyf74"]
 
 [node name="LevelControls" type="Node2D"]
 script = ExtResource("1_awsn8")
 
-[node name="LevelControls" type="Sprite2D" parent="."]
-position = Vector2(448, 416)
-texture = ExtResource("2_sfwwh")
+[node name="Panel" type="AspectRatioContainer" parent="."]
+offset_right = 104.0
+offset_bottom = 104.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Up" type="TextureRect" parent="Panel/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_3jko6")
+
+[node name="Move" type="TextureRect" parent="Panel/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("3_dj2cn")
+
+[node name="Down" type="TextureRect" parent="Panel/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("4_hteoe")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Left" type="TextureRect" parent="Panel/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("5_mobtj")
+
+[node name="Pan" type="TextureRect" parent="Panel/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("6_hy2bl")
+
+[node name="Right" type="TextureRect" parent="Panel/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("7_hyf74")
+stretch_mode = 3
