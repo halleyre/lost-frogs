@@ -11,9 +11,9 @@ const move_actions = {
 
 signal pan(direction)
 signal focus(dir)
-const focus_actions = {
-	Level.NEXT_F: "ui_focus_next",
-	Level.PREV_F: "ui_focus_prev"}
+const focus_actions = { # order is important here as ui-prev contains ui-next
+	Level.PREV_F: "ui_focus_prev",
+	Level.NEXT_F: "ui_focus_next"}
 
 
 func _input(event: InputEvent):
@@ -26,3 +26,4 @@ func _input(event: InputEvent):
 	for dir in focus_actions:
 		if event.is_action_pressed(focus_actions[dir]):
 			focus.emit(dir)
+			break

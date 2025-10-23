@@ -19,3 +19,7 @@ position = Vector2(80, 80)
 [node name="green_frog" parent="." instance=ExtResource("3_s32ua")]
 position = Vector2(16, 48)
 rotation = 1.5707964
+
+[node name="GreenerFrog" parent="." instance=ExtResource("2_6ihby")]
+position = Vector2(144, 48)
+rotation = -1.5707964

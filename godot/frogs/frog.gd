@@ -8,7 +8,7 @@ func dir_to_rot(dir) -> float:
 
 func rot_to_dir(rot) -> int:
 	rot = fposmod(rot, TAU)
-	var dir = UP
+	var dir = UP as int
 	while rot > PI/4:
 		rot -= PI/2
 		dir += 1
