@@ -8,44 +8,55 @@
 [ext_resource type="Texture2D" uid="uid://cqpvpp7yxl6uv" path="res://res/ui/level_controls/ctrl-pan.tres" id="6_hy2bl"]
 [ext_resource type="Texture2D" uid="uid://dvpyjri0mg2n5" path="res://res/ui/level_controls/ctrl-right.tres" id="7_hyf74"]
 
-[node name="LevelControls" type="Node2D"]
+[node name="LevelControls" type="AspectRatioContainer"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -104.0
+offset_top = -104.0
+grow_horizontal = 0
+grow_vertical = 0
 script = ExtResource("1_awsn8")
 
-[node name="Panel" type="AspectRatioContainer" parent="."]
-offset_right = 104.0
-offset_bottom = 104.0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 4
 
-[node name="Up" type="TextureRect" parent="Panel/VBoxContainer"]
+[node name="Up" type="TextureButton" parent="VBoxContainer"]
 layout_mode = 2
-texture = ExtResource("2_3jko6")
+size_flags_vertical = 2
+texture_normal = ExtResource("2_3jko6")
 
-[node name="Move" type="TextureRect" parent="Panel/VBoxContainer"]
+[node name="Move" type="TextureRect" parent="VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 6
 texture = ExtResource("3_dj2cn")
 
-[node name="Down" type="TextureRect" parent="Panel/VBoxContainer"]
+[node name="Down" type="TextureRect" parent="VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 10
 texture = ExtResource("4_hteoe")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Panel"]
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 2
-size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="Left" type="TextureRect" parent="Panel/HBoxContainer"]
+[node name="Left" type="TextureRect" parent="HBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 2
 texture = ExtResource("5_mobtj")
 
-[node name="Pan" type="TextureRect" parent="Panel/HBoxContainer"]
+[node name="Pan" type="TextureRect" parent="HBoxContainer"]
+visible = false
 layout_mode = 2
+size_flags_horizontal = 6
 texture = ExtResource("6_hy2bl")
 
-[node name="Right" type="TextureRect" parent="Panel/HBoxContainer"]
+[node name="Right" type="TextureRect" parent="HBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 10
 texture = ExtResource("7_hyf74")
-stretch_mode = 3
+
+[connection signal="pressed" from="VBoxContainer/Up" to="." method="_on_nav" flags=18]

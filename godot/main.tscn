@@ -8,3 +8,5 @@ script = ExtResource("1_ig7tw")
 levels = Array[PackedScene]([ExtResource("2_0xm2m")])
 
 [node name="UILayer" type="CanvasLayer" parent="."]
+scale = Vector2(2, 2)
+transform = Transform2D(2, 0, 0, 2, 0, 0)

@@ -1,5 +1,5 @@
 class_name LevelControls
-extends Node2D
+extends AspectRatioContainer
 
 signal move_just_pressed(direction)
 signal move_released(direction)
@@ -15,6 +15,14 @@ const focus_actions = { # order is important here as ui-prev contains ui-next
 	Level.PREV_F: "ui_focus_prev",
 	Level.NEXT_F: "ui_focus_next"}
 
+func _ready():
+	get_viewport().size_changed.connect(restore_controls)
+	restore_controls()
+	
+# is there a better way to stop the controls from falling off the screen?
+func restore_controls():
+	var canvas_scale = get_canvas_transform().get_scale()
+	position = get_viewport_rect().end / canvas_scale - size
 
 func _input(event: InputEvent):
 	for dir in move_actions:
@@ -27,3 +35,7 @@ func _input(event: InputEvent):
 		if event.is_action_pressed(focus_actions[dir]):
 			focus.emit(dir)
 			break
+
+func _on_nav(source: BaseButton) -> void:
+	if source == $VBoxContainer/Up:
+		move_just_pressed.emit(Frog.UP)
