@@ -8,6 +8,7 @@ const move_actions = {
 	Frog.RIGHT: "ui_right",
 	Frog.DOWN:	"ui_down",
 	Frog.LEFT:	"ui_left"}
+var move_buttons
 
 signal pan(direction)
 signal focus(dir)
@@ -18,6 +19,12 @@ const focus_actions = { # order is important here as ui-prev contains ui-next
 func _ready():
 	get_viewport().size_changed.connect(restore_controls)
 	restore_controls()
+	move_buttons = {
+		$VBoxContainer/Up: 		Frog.UP,
+		$HBoxContainer/Right:	Frog.RIGHT,
+		$VBoxContainer/Down:	Frog.DOWN,
+		$HBoxContainer/Left:	Frog.LEFT}
+
 	
 # is there a better way to stop the controls from falling off the screen?
 func restore_controls():
@@ -37,5 +44,6 @@ func _input(event: InputEvent):
 			break
 
 func _on_nav(source: BaseButton) -> void:
-	if source == $VBoxContainer/Up:
-		move_just_pressed.emit(Frog.UP)
+	for btn in move_buttons:
+		if source == btn:
+			move_just_pressed.emit(move_buttons[btn])

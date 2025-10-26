@@ -29,34 +29,39 @@ layout_mode = 2
 size_flags_vertical = 2
 texture_normal = ExtResource("2_3jko6")
 
-[node name="Move" type="TextureRect" parent="VBoxContainer"]
+[node name="Move" type="TextureButton" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 6
-texture = ExtResource("3_dj2cn")
+texture_normal = ExtResource("3_dj2cn")
 
-[node name="Down" type="TextureRect" parent="VBoxContainer"]
+[node name="Down" type="TextureButton" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 10
-texture = ExtResource("4_hteoe")
+texture_normal = ExtResource("4_hteoe")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 2
 size_flags_vertical = 4
 
-[node name="Left" type="TextureRect" parent="HBoxContainer"]
+[node name="Left" type="TextureButton" parent="HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 2
-texture = ExtResource("5_mobtj")
+texture_normal = ExtResource("5_mobtj")
 
-[node name="Pan" type="TextureRect" parent="HBoxContainer"]
+[node name="Pan" type="TextureButton" parent="HBoxContainer"]
 visible = false
 layout_mode = 2
 size_flags_horizontal = 6
-texture = ExtResource("6_hy2bl")
+texture_normal = ExtResource("6_hy2bl")
 
-[node name="Right" type="TextureRect" parent="HBoxContainer"]
+[node name="Right" type="TextureButton" parent="HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 10
-texture = ExtResource("7_hyf74")
+texture_normal = ExtResource("7_hyf74")
 
 [connection signal="pressed" from="VBoxContainer/Up" to="." method="_on_nav" flags=18]
+[connection signal="pressed" from="VBoxContainer/Move" to="." method="_on_nav" flags=18]
+[connection signal="pressed" from="VBoxContainer/Down" to="." method="_on_nav" flags=18]
+[connection signal="pressed" from="HBoxContainer/Left" to="." method="_on_nav" flags=18]
+[connection signal="pressed" from="HBoxContainer/Pan" to="." method="_on_nav" flags=18]
+[connection signal="pressed" from="HBoxContainer/Right" to="." method="_on_nav" flags=18]
