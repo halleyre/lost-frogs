@@ -18,17 +18,17 @@ var active_pan = {}
 @export var camera_speed = 200
 
 func _ready():
-	# start on frog with camera
+	# init frogs
 	frogs = get_children().filter(func(node): return node is Frog)
-	active_frog = frogs.find_custom(func(node): return node.has_node("Focus"))
-	
-	# init camera
-	camera = frogs[active_frog].get_node("Focus")
-	for dir in DIR_VECTORS:
-		active_pan[dir] = false
+	for frog in frogs: if frog.has_node("Focus"): active_frog = frog
 	
 	# connect frog signals
-	controls.move_just_pressed.connect(frogs[active_frog]._on_move_just_pressed)
+	controls.move_just_pressed.connect(active_frog._on_move_just_pressed)
+	
+	# init camera
+	camera = active_frog.get_node("Focus")
+	for dir in DIR_VECTORS:
+		active_pan[dir] = false
 	
 	# connect level signals
 	controls.pan_just_pressed.connect(_on_pan_just_pressed)
@@ -48,15 +48,15 @@ func _on_pan_released(dir):
 	active_pan[dir] = false
 	
 func focus_new(new_frog):
-	controls.move_just_pressed.disconnect(frogs[active_frog]._on_move_just_pressed)
+	controls.move_just_pressed.disconnect(active_frog._on_move_just_pressed)
 	camera.position = Vector2.ZERO
 	camera.reparent(frogs[new_frog], false)
-	active_frog = new_frog
-	controls.move_just_pressed.connect(frogs[active_frog]._on_move_just_pressed)
+	active_frog = frogs[new_frog]
+	controls.move_just_pressed.connect(active_frog._on_move_just_pressed)
 
 enum {PREV_F, NEXT_F}
 func _on_focus(dir):
 	if dir == PREV_F:
-		focus_new(posmod(active_frog - 1, frogs.size()))
+		focus_new(posmod(frogs.find(active_frog) - 1, frogs.size()))
 	if dir == NEXT_F:
-		focus_new(posmod(active_frog + 1, frogs.size()))
+		focus_new(posmod(frogs.find(active_frog) + 1, frogs.size()))
