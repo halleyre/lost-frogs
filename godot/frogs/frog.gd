@@ -1,30 +1,21 @@
 class_name Frog
-extends Sprite2D
+extends Area2D
 
-enum {UP, RIGHT, DOWN, LEFT}
-# order is important ^^vv
-func dir_to_rot(dir) -> float:
-	return dir * PI/2
-
-func rot_to_dir(rot) -> int:
-	rot = fposmod(rot, TAU)
-	var dir = UP as int
-	while rot > PI/4:
-		rot -= PI/2
-		dir += 1
-	return dir % 4
+func invalid_move():
+	pass
 	
 func move_back():
-	pass
+	invalid_move()
 
 func _on_move_just_pressed(dir):
-	if posmod(dir - rot_to_dir(rotation), 4) == 2:
+	var dir_v = Level.DIR_VECTORS[dir]
+	if roundi(dir_v.dot(Vector2.from_angle(rotation))) == -1:
 		move_back()
 		return
-	rotation = dir_to_rot(dir)
+
+	rotation = dir_v.angle()
+	position = transform * get_node("RayCast2D").target_position
 	
-	match dir:
-		UP:		position.y -= 32
-		RIGHT:	position.x += 32
-		DOWN:	position.y += 32
-		LEFT:	position.x -= 32
+	
+	
+	
