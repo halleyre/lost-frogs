@@ -1,9 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://dh51jnnoqr2gh"]
+[gd_scene load_steps=4 format=3 uid="uid://dh51jnnoqr2gh"]
 
 [ext_resource type="Texture2D" uid="uid://dwdc3vtgt3brc" path="res://assets/frogs/green-frog.png" id="1_v4td4"]
 [ext_resource type="Script" uid="uid://dw5pqqe5ac8ce" path="res://frogs/frog.gd" id="2_di41w"]
 
-[node name="GreenFrog" type="Sprite2D"]
-texture = ExtResource("1_v4td4")
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_di41w"]
+
+[node name="GreenFrog" type="Area2D"]
 script = ExtResource("2_di41w")
 metadata/_custom_type_script = "uid://dw5pqqe5ac8ce"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_v4td4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_di41w")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(32, 0)
