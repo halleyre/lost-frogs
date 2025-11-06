@@ -1,15 +1,15 @@
 class_name Frog
 extends Area2D
 
-# NB: keep this updated or dynamically set it
-const TILE_SIZE = 32
-
 var dead = false
-var height = 0
 
+var map
+var tile_size
 var no_shift
 var no_walk
 func _ready():
+	map = get_parent()
+	tile_size = Vector2(map.tile_set.tile_size) * Level.TILE_DIV
 	no_shift = get_node("NoShift")
 	no_walk = get_node("NoWalk")
 
@@ -21,9 +21,8 @@ func raycast(dir_v, ray) -> bool:
 # SHIFT: passive move
 func shift(dir_v) -> bool:
 	if raycast(dir_v, no_shift): return false
-	
-	
-	position += dir_v * TILE_SIZE
+	position += dir_v * tile_size
+	resolve_move()
 	return true
 	
 # WALK: active move
@@ -39,3 +38,8 @@ func _on_move_just_pressed(dir):
 	
 	var dir_v = Level.DIR_VECTORS[dir]
 	walk(dir_v)
+	
+func resolve_move():
+	var tile = map.get_cell_tile_data(map.local_to_map(position))
+	no_shift.collision_mask &= ~Level.HEIGHT_MASK
+	no_shift.set_collision_mask_value(tile.get_custom_data("exit_height"), true)

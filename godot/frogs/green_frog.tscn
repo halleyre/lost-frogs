@@ -8,6 +8,7 @@
 [node name="GreenFrog" type="Area2D"]
 collision_layer = 768
 collision_mask = 0
+monitoring = false
 script = ExtResource("2_di41w")
 metadata/_custom_type_script = "uid://dw5pqqe5ac8ce"
 
@@ -20,9 +21,9 @@ shape = SubResource("RectangleShape2D_di41w")
 [node name="NoShift" type="RayCast2D" parent="."]
 enabled = false
 target_position = Vector2(32, 0)
-collision_mask = 48
+collision_mask = 0
 
 [node name="NoWalk" type="RayCast2D" parent="."]
 enabled = false
 target_position = Vector2(32, 0)
-collision_mask = 48
+collision_mask = 152
