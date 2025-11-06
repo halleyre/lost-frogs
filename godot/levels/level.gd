@@ -1,12 +1,17 @@
 class_name Level
 extends TileMapLayer
 
+const TILE_DIV = 2
+
 enum {UP, RIGHT, DOWN, LEFT}
 const DIR_VECTORS = {
 	UP:    Vector2.UP,
 	RIGHT: Vector2.RIGHT,
 	DOWN:  Vector2.DOWN,
 	LEFT:  Vector2.LEFT}
+
+# Out-of-Reach (OOR) collision layers
+const HEIGHT_MASK = 0x000f_0000
 
 var controls: LevelControls = preload("res://ui/level_controls.tscn").instantiate()
 

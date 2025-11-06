@@ -15,6 +15,21 @@ run/main_scene="uid://baa365qtbk4ed"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="uid://dwdc3vtgt3brc"
 
+[layer_names]
+
+2d_physics/layer_1="Terrain_Grass1"
+2d_physics/layer_2="Terrain_Grass2"
+2d_physics/layer_3="Terrain_Grass3"
+2d_physics/layer_4="Terrain_Snow"
+2d_physics/layer_5="Terrain_Sand"
+2d_physics/layer_6="Terrain_Shallow"
+2d_physics/layer_7="Terrain_Deep"
+2d_physics/layer_8="Terrain_OOB"
+2d_physics/layer_9="Mob_Frog"
+2d_physics/layer_17="OOR_Deep"
+2d_physics/layer_18="OOR_Surface"
+2d_physics/layer_19="OOR_Reserved"
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
