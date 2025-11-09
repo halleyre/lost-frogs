@@ -21,9 +21,11 @@ shape = SubResource("RectangleShape2D_di41w")
 [node name="NoShift" type="RayCast2D" parent="."]
 enabled = false
 target_position = Vector2(32, 0)
-collision_mask = 0
+collision_mask = 256
+collide_with_areas = true
 
 [node name="NoWalk" type="RayCast2D" parent="."]
 enabled = false
 target_position = Vector2(32, 0)
 collision_mask = 152
+collide_with_areas = true
